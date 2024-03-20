@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="login-background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.LogInViewController">
+   <children>
+      <StackPane layoutX="100.0" layoutY="100.0" prefHeight="600.0" prefWidth="1000.0" styleClass="login-pane-background" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="100.0">
+         <padding>
+            <Insets top="100.0" />
+         </padding>
+         <children>
+            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="990.0" spacing="25.0" StackPane.alignment="TOP_CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                     <image>
+                        <Image url="@../resources/user.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1200.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../resources/Usuario-48.png" />
+                           </image>
+                        </ImageView>
+                        <MFXTextField fx:id="txfUsuario" floatMode="ABOVE" floatingText="Usuario" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="35.0" layoutY="435.0" prefHeight="50.0" prefWidth="1200.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../resources/Contraseña-48.png" />
+                           </image>
+                        </ImageView>
+                        <MFXPasswordField fx:id="psfClave" floatingText="Clave" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="600.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="35.0" layoutY="522.0" prefHeight="50.0" prefWidth="1200.0" spacing="40.0">
+                     <children>
+                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#onActionbtnCancelar" prefHeight="50.0" prefWidth="200.0" styleClass="button-LogIn" text="Cancelar" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnIngresar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionbtnIngresar" prefHeight="50.0" prefWidth="200.0" styleClass="button-LogIn" text="Ingresar" />
+                        <Button fx:id="btnClose" mnemonicParsing="false" onAction="#onActionbtnClose" text="Button" />
+                     </children>
+                  </HBox>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="25.0" />
+               </StackPane.margin>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

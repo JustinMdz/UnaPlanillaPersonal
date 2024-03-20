@@ -1,0 +1,20 @@
+.login-background{
+    -fx-background-image: url("../resources/FondoInicioRojo.png");
+}
+
+.images{
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.button-LogIn{
+     -fx-background-color: #666AFA;
+     -fx-text-fill: white;
+     -fx-font-size: 20px;
+     
+}
+
+.login-pane-background{
+    -fx-background-color: white;
+}

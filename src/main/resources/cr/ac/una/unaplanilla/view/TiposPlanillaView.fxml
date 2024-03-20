@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.unaplanilla.controller.TiposPlanillaController">
+   <children>
+      <Label layoutX="133.0" layoutY="115.0" prefHeight="130.0" prefWidth="355.0" text="TiposPlanilla" />
+   </children>
+</AnchorPane>
