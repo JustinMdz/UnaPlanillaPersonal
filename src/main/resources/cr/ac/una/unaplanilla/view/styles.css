@@ -1,20 +1,54 @@
-.login-background{
-    -fx-background-image: url("../resources/FondoInicioRojo.png");
+/*
+    Created on : 2 abr 2024, 18:22:13
+    author     : Stiward Araya
+*/
+
+*{
+    /* Constants */
+    -fx-base-color-focus: #09b6bc;
+    -fx-base-color-unfocus: #4d4d4d;
+    -fx-base-color-etiquetas: #4d4d4d;
+    -fx-base-color-titulos: #51b6cd;
+    -fx-base-color-error: #D34336;
+    -fx-base-color-id: #00C853;
+
+    -mfx-main: -fx-base-color-focus;
+    -mfx-purple: -fx-base-color-focus;
 }
 
-.images{
-    -fx-background-size: cover;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center center;
+.jfx-panel-fondo{
+    -fx-background-color: #2196F3;
+    -fx-opacity: 0.8;
 }
 
-.button-LogIn{
-     -fx-background-color: #666AFA;
-     -fx-text-fill: white;
-     -fx-font-size: 20px;
-     
-}
-
-.login-pane-background{
+.jfx-panel-fondo > AnchorPane{
     -fx-background-color: white;
+    -fx-border-color: #97a692;
+    -fx-border-width: 10px;
+}
+
+.jfx-contenedor-principal{
+    -fx-background-color: white;
+    -fx-background-radius: 4.0;
+    -fx-padding: 25 15 15 15;
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 10.0, 0.7, 0.0, 1.5);
+}
+
+.jfx-titulo-label{
+    -fx-font-size: 24px;
+    -fx-padding: 5 0 5 0;
+    -fx-text-fill: -fx-base-color-titulos;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 2, 0.0, 1, 2);
+}
+
+.mfx-text-field{
+    -mfx-float-mode: BORDER;
+    -fx-font-size: 14px;
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-alignment: TOP_LEFT;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: -fx-base-color-etiquetas;
 }
