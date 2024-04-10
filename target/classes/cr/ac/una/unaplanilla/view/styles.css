@@ -56,6 +56,7 @@
     -fx-font-weight: bold;
     -fx-font-size : 14px;
     -fx-alignmenr : CENTER_LEFT;
+    -fx-cursor:hand;
 }
 
 .button:hover{
@@ -92,4 +93,33 @@
 
 .jfx-btn-guardar>ImageView{
     -fx-image:url("../resources/Guardar-48.png");
+}
+
+.jfx-titulo-label-PricipalView{
+    -fx-font-size: 20px;
+    -fx-padding: 5 0 5 0;
+    -fx-text-fill: -fx-base-color-titulos;
+    -fx-font-weight: bold;
+}
+
+.jfx-containers-PrincipalView{
+    -fx-padding: 10;
+    -fx-spacing: 5px;
+}
+.jfx-panel-profile{
+    -fx-padding: 3px;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 10.0, 0.7, 0.0, 1.5);
+    -fx-background-radius: 5%;
+}
+.jfx-panel-profile>ImageView{
+     -fx-image:url("../resources/user.png");
+}
+
+.jfx-btn-empleados-tiposPlanilla,.jfx-btn-empleados-tiposPlanilla:armed,.jfx-btn-empleados-tiposPlanilla:focused{
+    -fx-background-color:#2196F3;
+}
+
+.jfx-btn-cerrarSes-Salir,.jfx-btn-cerrarSes-Salir:armed,.jfx-btn-cerrarSes-Salir:focused{
+    -fx-background-color:#00C853;
 }
