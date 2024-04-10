@@ -123,3 +123,7 @@
 .jfx-btn-cerrarSes-Salir,.jfx-btn-cerrarSes-Salir:armed,.jfx-btn-cerrarSes-Salir:focused{
     -fx-background-color:#00C853;
 }
+
+.jfx-separator-EmpleadosView{
+    -fx-background-color:-fx-base-color-titulos;
+}
