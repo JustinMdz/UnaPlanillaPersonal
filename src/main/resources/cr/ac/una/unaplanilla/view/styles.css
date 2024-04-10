@@ -1,8 +1,3 @@
-/*
-    Created on : 2 abr 2024, 18:22:13
-    author     : Stiward Araya
-*/
-
 *{
     /* Constants */
     -fx-base-color-focus: #09b6bc;
@@ -51,4 +46,50 @@
     -fx-alignment: TOP_LEFT;
     -fx-text-fill: black;
     -fx-prompt-text-fill: -fx-base-color-etiquetas;
+}
+
+.mfx-button{
+    -mfx-button-type: RAISED;
+    -fx-opacity : 0.8;
+    -fx-content-display: left;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size : 14px;
+    -fx-alignmenr : CENTER_LEFT;
+}
+
+.button:hover{
+    -fx-background-color: #FF6D00;
+}
+
+.jfx-btn-nuevo,.jfx-btn-nuevo:armed,.jfx-btn-nuevo:focused{
+    -fx-background-color:#2196F3;
+}
+
+.jfx-btn-nuevo>ImageView{
+    -fx-image:url("../resources/Agregar-48.png");
+}
+
+.jfx-btn-buscar,.jfx-btn-buscar:armed,.jfx-btn-buscar:focused{
+    -fx-background-color:#00bcd4;
+}
+
+.jfx-btn-buscar>ImageView{
+    -fx-image:url("../resources/Buscar-48.png");
+}
+
+.jfx-btn-eliminar,.jfx-btn-eliminar:armed,.jfx-btn-eliminar:focused{
+    -fx-background-color:#f44336;
+}
+
+.jfx-btn-eliminar>ImageView{
+    -fx-image:url("../resources/Eliminar-48.png");
+}
+
+.jfx-btn-guardar,.jfx-btn-guardar:armed,.jfx-btn-guardar:focused{
+    -fx-background-color:#00C853;
+}
+
+.jfx-btn-guardar>ImageView{
+    -fx-image:url("../resources/Guardar-48.png");
 }

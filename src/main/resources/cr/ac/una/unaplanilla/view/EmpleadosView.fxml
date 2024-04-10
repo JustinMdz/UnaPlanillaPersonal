@@ -26,7 +26,7 @@
                         <VBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
                            <children>
                               <MFXTextField floatMode="BORDER" floatingText="Id" prefHeight="50.0" prefWidth="380.0" />
-                              <MFXTextField floatMode="BORDER" floatingText="Nombre" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXTextField floatMode="BORDER" floatingText="Nombre" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
                               <MFXTextField floatMode="BORDER" floatingText="Primer Apellido" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
                               <MFXTextField floatMode="BORDER" floatingText="Segundo Apellido" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" />
                               <MFXTextField floatMode="BORDER" floatingText="Cedula" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
@@ -68,22 +68,22 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" spacing="10.0">
                      <children>
-                        <MFXButton prefHeight="50.0" prefWidth="150.0" text="Nuevo">
+                        <MFXButton prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-nuevo" text="Nuevo">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="jfx-btn-nuevo" />
+                           </graphic>
+                        </MFXButton>
+                        <MFXButton layoutX="325.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-buscar" text="Buscar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton layoutX="325.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" text="Nuevo">
+                        <MFXButton layoutX="405.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-eliminar" text="Eliminar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton layoutX="405.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" text="Eliminar">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                        </MFXButton>
-                        <MFXButton layoutX="485.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" text="Guardar">
+                        <MFXButton layoutX="485.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-guardar" text="Guardar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>

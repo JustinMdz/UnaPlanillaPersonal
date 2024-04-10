@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3e9a52c-bd6c-410b-b8ce-ebb6513f7f07" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/cr/ac/una/unaplanilla/view/EmpleadosView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cr/ac/una/unaplanilla/view/EmpleadosView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/cr/ac/una/unaplanilla/view/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cr/ac/una/unaplanilla/view/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cr/ac/una/unaplanilla/view/EmpleadosView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cr/ac/una/unaplanilla/view/EmpleadosView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cr/ac/una/unaplanilla/view/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cr/ac/una/unaplanilla/view/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +17,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2eZZlrlWEuy3k10660ORTH19ND3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,7 +36,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/justi/Desktop/Progra ll/TareaCooperativa/TareaCooperativa",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -55,6 +63,10 @@
       <option name="presentableId" value="Default" />
       <updated>1712114217271</updated>
       <workItem from="1712114222698" duration="30000" />
+      <workItem from="1712180614443" duration="240000" />
+      <workItem from="1712182775150" duration="29000" />
+      <workItem from="1712184665865" duration="1303000" />
+      <workItem from="1712205475572" duration="23000" />
     </task>
     <servers />
   </component>
