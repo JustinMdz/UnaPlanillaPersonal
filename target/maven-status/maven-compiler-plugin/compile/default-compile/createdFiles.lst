@@ -4,11 +4,14 @@ cr\ac\una\unaplanilla\controller\TiposPlanillaController.class
 cr\ac\una\unaplanilla\util\FlowController.class
 cr\ac\una\unaplanilla\controller\EmpleadosController.class
 cr\ac\una\unaplanilla\util\Mensaje.class
+cr\ac\una\unaplanilla\service\EmpleadoService.class
 cr\ac\una\unaplanilla\Main.class
 cr\ac\una\unaplanilla\util\BindingUtils.class
 cr\ac\una\unaplanilla\App.class
 cr\ac\una\unaplanilla\controller\LogInViewController.class
 cr\ac\una\unaplanilla\model\Empleado.class
+cr\ac\una\unaplanilla\model\EmpleadoDto.class
+cr\ac\una\unaplanilla\util\EntityManagerHelper.class
 cr\ac\una\unaplanilla\util\Formato.class
 cr\ac\una\unaplanilla\controller\PrincipalController.class
 cr\ac\una\unaplanilla\model\TipoPlanilla.class

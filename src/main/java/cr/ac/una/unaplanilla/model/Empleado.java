@@ -27,8 +27,9 @@ import java.time.LocalDate;
 @Table(name = "PLAM_EMPLEADOS", schema = "UNA")
 @NamedQueries(
         {
-            @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e"),
-            @NamedQuery(name = "Empleado.findByEmpId", query = "SELECT e FROM Empleado e WHERE e.empId = :empId"),
+            @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e"),//revisar estas NamedQuery que esten bien escritas
+            @NamedQuery(name = "Empleado.findByEmpId", query = "SELECT e FROM Empleado e WHERE e.id = :id"),
+            @NamedQuery(name = "Empleado.findByUsuarioClave", query = "SELECT e FROM Empleado e WHERE e.usuario = :usuario AND e.clave = :clave"),
         /* @NamedQuery(name = "Empleado.findByEmpNombre", query = "SELECT e FROM Empleado e WHERE e.empNombre = :empNombre"),
     @NamedQuery(name = "Empleado.findByEmpPapellido", query = "SELECT e FROM Empleado e WHERE e.empPapellido = :empPapellido"),
     @NamedQuery(name = "Empleado.findByEmpSapellido", query = "SELECT e FROM Empleado e WHERE e.empSapellido = :empSapellido"),
@@ -37,7 +38,6 @@ import java.time.LocalDate;
     @NamedQuery(name = "Empleado.findByEmpCorreo", query = "SELECT e FROM Empleado e WHERE e.empCorreo = :empCorreo"),
     @NamedQuery(name = "Empleado.findByEmpAdministrador", query = "SELECT e FROM Empleado e WHERE e.empAdministrador = :empAdministrador"),
     @NamedQuery(name = "Empleado.findByEmpUsuario", query = "SELECT e FROM Empleado e WHERE e.empUsuario = :empUsuario"),
-    @NamedQuery(name = "Empleado.findByEmpClave", query = "SELECT e FROM Empleado e WHERE e.empClave = :empClave"),
     @NamedQuery(name = "Empleado.findByEmpFingreso", query = "SELECT e FROM Empleado e WHERE e.empFingreso = :empFingreso"),
     @NamedQuery(name = "Empleado.findByEmpFsalida", query = "SELECT e FROM Empleado e WHERE e.empFsalida = :empFsalida"),
     @NamedQuery(name = "Empleado.findByEmpEstado", query = "SELECT e FROM Empleado e WHERE e.empEstado = :empEstado"),
@@ -79,10 +79,10 @@ public class Empleado implements Serializable {
     private String clave;
     @Basic(optional = false)
     @Column(name = "EMP_FINGRESO")
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     private LocalDate fechaIngreso;
     @Column(name = "EMP_FSALIDA")
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     private LocalDate fechaSalida;
     @Basic(optional = false)
     @Column(name = "EMP_ESTADO")

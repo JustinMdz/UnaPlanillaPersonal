@@ -9,6 +9,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,15 +26,18 @@
                      <children>
                         <VBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <MFXTextField floatMode="BORDER" floatingText="Id" prefHeight="50.0" prefWidth="380.0" />
-                              <MFXTextField floatMode="BORDER" floatingText="Nombre" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
-                              <MFXTextField floatMode="BORDER" floatingText="Primer Apellido" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
-                              <MFXTextField floatMode="BORDER" floatingText="Segundo Apellido" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" />
-                              <MFXTextField floatMode="BORDER" floatingText="Cedula" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXTextField fx:id="txtId" floatMode="BORDER" floatingText="Id" onKeyPressed="#onKeyPressedTxtId" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXTextField fx:id="txtNombre" floatMode="BORDER" floatingText="Nombre" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
+                              <MFXTextField fx:id="txtPApellido" floatMode="BORDER" floatingText="Primer Apellido" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXTextField fx:id="txtSApellido" floatMode="BORDER" floatingText="Segundo Apellido" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXTextField fx:id="txtCedula" floatMode="BORDER" floatingText="Cedula" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <MFXRadioButton text="Masculino" />
-                                    <MFXRadioButton layoutX="175.0" layoutY="208.0" text="Femenino" />
+                                    <MFXRadioButton fx:id="rdbMasculino" text="Masculino">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="tggGenero" />
+                                       </toggleGroup></MFXRadioButton>
+                                    <MFXRadioButton fx:id="rdbFemenino" layoutX="175.0" layoutY="208.0" text="Femenino" toggleGroup="$tggGenero" />
                                  </children>
                               </HBox>
                            </children>
@@ -43,19 +47,19 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="30.0">
                                  <children>
-                                    <MFXCheckbox contentDisposition="RIGHT" text="Administrador" />
-                                    <MFXCheckbox contentDisposition="RIGHT" layoutX="142.0" layoutY="228.0" text="Activo" />
+                                    <MFXCheckbox fx:id="chkAdministrador" contentDisposition="RIGHT" onAction="#onActionCheckAdministrador" text="Administrador" />
+                                    <MFXCheckbox fx:id="chkActivo" contentDisposition="RIGHT" layoutX="142.0" layoutY="228.0" text="Activo" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="5.0">
                                  <children>
-                                    <MFXDatePicker floatMode="BORDER" floatingText="Fecha Ingreso" prefHeight="40.0" prefWidth="150.0" />
-                                    <MFXDatePicker floatMode="BORDER" floatingText="Fecha Salida" layoutX="109.0" layoutY="41.0" prefHeight="40.0" prefWidth="150.0" />
+                                    <MFXDatePicker fx:id="dtpFIngreso" floatMode="BORDER" floatingText="Fecha Ingreso" prefHeight="40.0" prefWidth="150.0" />
+                                    <MFXDatePicker fx:id="dtpFSalida" floatMode="BORDER" floatingText="Fecha Salida" layoutX="109.0" layoutY="41.0" prefHeight="40.0" prefWidth="150.0" />
                                  </children>
                               </HBox>
-                              <MFXTextField floatMode="BORDER" floatingText="Correo" prefHeight="50.0" prefWidth="380.0" VBox.vgrow="ALWAYS" />
-                              <MFXTextField floatMode="BORDER" floatingText="Usuario" layoutX="34.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
-                              <MFXPasswordField floatMode="BORDER" floatingText="Clave" prefHeight="50.0" prefWidth="380.0" VBox.vgrow="ALWAYS" />
+                              <MFXTextField fx:id="txtCorreo" floatMode="BORDER" floatingText="Correo" prefHeight="50.0" prefWidth="380.0" VBox.vgrow="ALWAYS" />
+                              <MFXTextField fx:id="txtUsuario" floatMode="BORDER" floatingText="Usuario" layoutX="34.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
+                              <MFXPasswordField fx:id="txtClave" floatMode="BORDER" floatingText="Clave" prefHeight="50.0" prefWidth="380.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
@@ -68,22 +72,22 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" spacing="10.0">
                      <children>
-                        <MFXButton prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-nuevo" text="Nuevo">
+                        <MFXButton fx:id="btnNuevo" onAction="#onActionBtnNuevo" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-nuevo" text="Nuevo">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="jfx-btn-nuevo" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton layoutX="325.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-buscar" text="Buscar">
+                        <MFXButton layoutX="325.0" layoutY="10.0" onAction="#onActionBtnGuardar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-buscar" text="Buscar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton layoutX="405.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-eliminar" text="Eliminar">
+                        <MFXButton fx:id="btnEliminar" layoutX="405.0" layoutY="10.0" onAction="#onActionBtnEliminar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-eliminar" text="Eliminar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </MFXButton>
-                        <MFXButton layoutX="485.0" layoutY="10.0" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-guardar" text="Guardar">
+                        <MFXButton fx:id="btnGuardar" layoutX="485.0" layoutY="10.0" onAction="#onActionBtnGuardar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-guardar" text="Guardar">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>

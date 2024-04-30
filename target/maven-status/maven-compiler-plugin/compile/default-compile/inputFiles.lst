@@ -10,6 +10,9 @@ C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\u
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\controller\EmpleadosController.java
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\controller\PrincipalController.java
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\model\Empleado.java
+C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\util\EntityManagerHelper.java
+C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\service\EmpleadoService.java
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\util\BindingUtils.java
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\util\Mensaje.java
 C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\controller\LogInViewController.java
+C:\Users\justi\Desktop\Progra ll\Lecciones\UnaPlanilla\src\main\java\cr\ac\una\unaplanilla\model\EmpleadoDto.java
