@@ -5,6 +5,7 @@ import cr.ac.una.unaplanilla.util.AppContext;
 import cr.ac.una.unaplanilla.util.FlowController;
 import cr.ac.una.unaplanilla.util.Mensaje;
 import cr.ac.una.unaplanilla.util.Respuesta;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
@@ -31,11 +32,9 @@ public class LogInViewController extends Controller implements Initializable {
     @FXML
     private MFXPasswordField psfClave;
     @FXML
-    private Button btnCancelar;
+    private MFXButton btnCancelar;
     @FXML
-    private Button btnIngresar;
-    @FXML
-    private Button btnClose;
+    private MFXButton btnIngresar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,8 +78,5 @@ public class LogInViewController extends Controller implements Initializable {
 
     }
 
-    @FXML
-    private void onActionbtnClose(ActionEvent event) {
-    }
 
 }

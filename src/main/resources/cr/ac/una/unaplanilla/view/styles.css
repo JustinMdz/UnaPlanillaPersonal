@@ -15,6 +15,13 @@
     -fx-background-color: #2196F3;
     -fx-opacity: 0.8;
 }
+.jfx-panel-fondo-login{
+    -fx-background-color: cornsilk;
+    -fx-opacity: 0.8;
+}
+.login-pane-background{
+    -fx-background-image:url("../resources/FondoInicioRojo.png");
+}
 
 .jfx-panel-fondo > AnchorPane{
     -fx-background-color: white;
@@ -66,31 +73,25 @@
 .jfx-btn-nuevo,.jfx-btn-nuevo:armed,.jfx-btn-nuevo:focused{
     -fx-background-color:#2196F3;
 }
-
-.jfx-btn-nuevo>ImageView{
-    -fx-image:url("../resources/Agregar-48.png");
-}
-
 .jfx-btn-buscar,.jfx-btn-buscar:armed,.jfx-btn-buscar:focused{
     -fx-background-color:#00bcd4;
 }
-
-.jfx-btn-buscar>ImageView{
-    -fx-image:url("../resources/Buscar-48.png");
-}
-
 .jfx-btn-eliminar,.jfx-btn-eliminar:armed,.jfx-btn-eliminar:focused{
     -fx-background-color:#f44336;
 }
-
-.jfx-btn-eliminar>ImageView{
-    -fx-image:url("../resources/Eliminar-48.png");
-}
-
 .jfx-btn-guardar,.jfx-btn-guardar:armed,.jfx-btn-guardar:focused{
     -fx-background-color:#00C853;
 }
 
+.jfx-btn-nuevo>ImageView{
+    -fx-image:url("../resources/Agregar-48.png");
+}
+.jfx-btn-buscar>ImageView{
+    -fx-image:url("../resources/Buscar-48.png");
+}
+.jfx-btn-eliminar>ImageView{
+    -fx-image:url("../resources/Eliminar-48.png");
+}
 .jfx-btn-guardar>ImageView{
     -fx-image:url("../resources/Guardar-48.png");
 }
@@ -113,7 +114,7 @@
     -fx-background-radius: 5%;
 }
 .jfx-panel-profile>ImageView{
-     -fx-image:url("../resources/user.png");
+    -fx-image:url("../resources/user.png");
 }
 
 .jfx-btn-empleados-tiposPlanilla,.jfx-btn-empleados-tiposPlanilla:armed,.jfx-btn-empleados-tiposPlanilla:focused{
