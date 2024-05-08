@@ -59,4 +59,66 @@ public class EmpleadoService {
             return new Respuesta(false, "Error obteniendo el empleado.", "getEmpleado " + ex.getMessage());
         }
     }
+
+    public Respuesta guardarEmpleado(EmpleadoDto empleadoDto) {
+        try
+        {
+            et = em.getTransaction();
+            et.begin();
+            Empleado empleado;
+            if (empleadoDto.getId() != null && empleadoDto.getId() > 0)
+            {
+                empleado = em.find(Empleado.class, empleadoDto.getId());
+                if (empleado == null)
+                {
+                    return new Respuesta(false, "No se encontro en el empleado a guardar", "guardarEmpleado noResultExeption");
+                }
+                empleado.actualizar(empleadoDto);
+                empleado = em.merge(empleado);
+            } else
+            {
+                empleado = new Empleado(empleadoDto);
+                em.persist(empleado);
+            }
+            et.commit();
+            return new Respuesta(true, "", "", "Empleado", new EmpleadoDto(empleado));
+
+        } catch (Exception ex)
+        {
+            et.rollback();
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error guardando el empleado ", ex);
+            return new Respuesta(false, "Error guardando el empleado.", "guardarEmpleado" + ex.getMessage());
+        }
+    }
+
+    public Respuesta eliminarEmpleado(Long id) {
+        try
+        {
+            et = em.getTransaction();
+            et.begin();
+            Empleado empleado;
+            if (id != null && id > 0)
+            {
+                empleado = em.find(Empleado.class, id);
+                if (empleado == null)
+                {
+                    return new Respuesta(false, "No se encontro en el empleado a eliminar", "eliminarEmpleado noResultExeption");
+                }
+
+                em.remove(empleado);
+            } else
+            {
+                return new Respuesta(false, "Favor consultar el empleado a eliminar", "");
+
+            }
+            et.commit();
+            return new Respuesta(true, "", "");
+
+        } catch (Exception ex)
+        {
+            et.rollback();
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error eliminando el empleado ", ex);
+            return new Respuesta(false, "Error elimanando el empleado.", "eliminarEmpleado" + ex.getMessage());
+        }
+    }
 }
