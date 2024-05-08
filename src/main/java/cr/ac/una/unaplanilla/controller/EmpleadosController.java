@@ -96,6 +96,8 @@ public class EmpleadosController extends Controller implements Initializable {
         txtUsuario.delegateSetTextFormatter(Formato.getInstance().letrasFormat(15));
         txtClave.delegateSetTextFormatter(Formato.getInstance().maxLengthFormat(8));
         empleadoDto = new EmpleadoDto();
+        nuevoEmpleado();
+        IndicarRequeridos();
     }
 
     @Override
