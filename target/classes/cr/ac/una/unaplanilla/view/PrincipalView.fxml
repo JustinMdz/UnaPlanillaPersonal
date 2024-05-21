@@ -28,7 +28,7 @@
             <MFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onActionBtnEmpleados" styleClass="jfx-btn-empleados-tiposPlanilla" text="Empleados" />
             <MFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onActionBtnTiposPlanilla" styleClass="jfx-btn-empleados-tiposPlanilla" text="TiposPlanilla" />
             <MFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="jfx-btn-cerrarSes-Salir" text="Cerrar Sesión" />
-            <MFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="jfx-btn-cerrarSes-Salir" text="Salir" />
+            <MFXButton fx:id="btnSalir" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#OnActionBtnSalir" styleClass="jfx-btn-cerrarSes-Salir" text="Salir" />
          </children>
          <styleClass>
             <String fx:value="jfx-containers-PrincipalView" />

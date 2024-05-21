@@ -1,11 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.unaplanilla.controller.TiposPlanillaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="jfx-panel-fondo" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.unaplanilla.controller.TiposPlanillaController">
    <children>
-      <Label layoutX="133.0" layoutY="115.0" prefHeight="130.0" prefWidth="355.0" text="TiposPlanilla" />
+      <AnchorPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label styleClass="jfx-titulo-label" text="Control de Tipos Planilla" VBox.vgrow="ALWAYS" />
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                    <tabs>
+                      <Tab text="Untitled Tab 1">
+                        <content>
+                          <AnchorPane minWidth="0.0">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="jfx-contenedor-principal" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <VBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <MFXTextField fx:id="txtId" floatMode="BORDER" floatingText="Id" onKeyPressed="#onKeyPressedTxtId" prefHeight="50.0" prefWidth="380.0" />
+                                                      <MFXTextField fx:id="txtCodigo" floatMode="BORDER" floatingText="Codigo" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
+                                                      <MFXTextField fx:id="txtDescripcion" floatMode="BORDER" floatingText="Descripcion" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
+                                                      <MFXTextField fx:id="txtPlantillasPorMes" floatMode="BORDER" floatingText="Plantillas por mes" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <HBox alignment="CENTER_RIGHT" spacing="30.0">
+                                                         <children>
+                                                            <MFXCheckbox fx:id="chkActivo" contentDisposition="RIGHT" layoutX="142.0" layoutY="228.0" text="Activo" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER" spacing="10.0">
+                                             <children>
+                                                <MFXButton fx:id="btnNuevo" onAction="#onActionBtnNuevo" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-nuevo" text="Nuevo">
+                                                   <graphic>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="jfx-btn-nuevo" />
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="btnGuardar" layoutX="325.0" layoutY="10.0" onAction="#onActionBtnGuardar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-buscar" text="Buscar">
+                                                   <graphic>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="btnEliminar" layoutX="405.0" layoutY="10.0" onAction="#onActionBtnEliminar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-eliminar" text="Eliminar">
+                                                   <graphic>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="btnGuardar" layoutX="485.0" layoutY="10.0" onAction="#onActionBtnGuardar" prefHeight="50.0" prefWidth="150.0" styleClass="jfx-btn-guardar" text="Guardar">
+                                                   <graphic>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </MFXButton>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Untitled Tab 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

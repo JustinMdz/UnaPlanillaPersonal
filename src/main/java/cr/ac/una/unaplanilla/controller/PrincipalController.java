@@ -5,6 +5,7 @@
 package cr.ac.una.unaplanilla.controller;
 
 import cr.ac.una.unaplanilla.util.FlowController;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +22,8 @@ public class PrincipalController extends Controller implements Initializable {
 
     @FXML
     private BorderPane PanelRoot;
+    @FXML
+    private MFXButton btnSalir;
 
     /**
      * Initializes the controller class.
@@ -43,6 +46,10 @@ public class PrincipalController extends Controller implements Initializable {
     @FXML
     private void onActionBtnTiposPlanilla(ActionEvent event) {
         FlowController.getInstance().goView("TiposPlanillaView");
+    }
+
+    @FXML
+    private void OnActionBtnSalir(ActionEvent event) {
     }
     
 }

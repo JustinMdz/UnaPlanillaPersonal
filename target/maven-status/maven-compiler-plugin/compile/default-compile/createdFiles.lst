@@ -11,7 +11,9 @@ cr\ac\una\unaplanilla\App.class
 cr\ac\una\unaplanilla\controller\LogInViewController.class
 cr\ac\una\unaplanilla\model\Empleado.class
 cr\ac\una\unaplanilla\model\EmpleadoDto.class
+cr\ac\una\unaplanilla\service\TipoPlanillaService.class
 cr\ac\una\unaplanilla\util\EntityManagerHelper.class
+cr\ac\una\unaplanilla\model\TipoPlanillaDto.class
 cr\ac\una\unaplanilla\util\Formato.class
 cr\ac\una\unaplanilla\controller\PrincipalController.class
 cr\ac\una\unaplanilla\model\TipoPlanilla.class
