@@ -34,8 +34,13 @@ import javafx.scene.input.KeyEvent;
 public class TiposPlanillaController extends Controller implements Initializable {
 
     @FXML
-    private MFXTextField txtId;
-
+    private MFXTextField txfId;
+    @FXML
+    private MFXTextField txfCodigo;
+    @FXML
+    private MFXTextField txfDescripcion;
+    @FXML
+    private MFXTextField txfPlantillasPorMes;
     @FXML
     private MFXCheckbox chkActivo;
     @FXML
@@ -45,19 +50,13 @@ public class TiposPlanillaController extends Controller implements Initializable
     @FXML
     private MFXButton btnGuardar;
     @FXML
-    private MFXTextField txtCodigo;
-    @FXML
-    private MFXTextField txtDescripcion;
-    @FXML
-    private MFXTextField txtPlantillasPorMes;
-    private TipoPlanillaDto tipoPlanillaDto;
-    private List<Node> requeridos;
-    @FXML
     private MFXButton btnNuevo1;
     @FXML
     private MFXButton btnGuardar1;
     @FXML
     private MFXButton btnEliminar1;
+    private TipoPlanillaDto tipoPlanillaDto;
+    private List<Node> requeridos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,18 +68,12 @@ public class TiposPlanillaController extends Controller implements Initializable
         this.tipoPlanillaDto = new TipoPlanillaDto();
         this.requeridos = new ArrayList<>();
         chkActivo.setUserData("A");
-        txtId.delegateSetTextFormatter(Formato.getInstance().integerFormat());
-        txtCodigo.delegateSetTextFormatter(Formato.getInstance().letrasFormat(4));
+        txfId.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txfCodigo.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(4));
+        txfDescripcion.delegateSetTextFormatter(Formato.getInstance().letrasFormat(40));
+        txfPlantillasPorMes.delegateSetTextFormatter(Formato.getInstance().integerFormatWithMaxLength(2));
         nuevoTipoPlanilla();
         IndicarRequeridos();
-    }
-
-    @FXML
-    private void onKeyPressedTxtId(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER && !txtId.getText().isEmpty())
-        {
-            cargarTipoPlanilla(Long.valueOf(txtId.getText()));
-        }
     }
 
     @FXML
@@ -179,7 +172,7 @@ public class TiposPlanillaController extends Controller implements Initializable
 
     private void IndicarRequeridos() {
         requeridos.clear();
-        requeridos.addAll(Arrays.asList(txtCodigo, txtDescripcion, txtPlantillasPorMes));
+        requeridos.addAll(Arrays.asList(txfCodigo, txfDescripcion, txfPlantillasPorMes));
     }
 
     public String validarRequeridos() {
@@ -242,27 +235,35 @@ public class TiposPlanillaController extends Controller implements Initializable
         unbindTipoPlanilla();
         tipoPlanillaDto = new TipoPlanillaDto();
         bindTipoPlanilla(true);
-        txtId.clear();
-        txtId.requestFocus();
+        txfId.clear();
+        txfId.requestFocus();
     }
 
     private void bindTipoPlanilla(Boolean nuevo) {
         if (!nuevo)
         {
-            txtId.textProperty().bindBidirectional(tipoPlanillaDto.id);
+            txfId.textProperty().bind(tipoPlanillaDto.id);
         }
-        txtCodigo.textProperty().bindBidirectional(tipoPlanillaDto.codigo);
-        txtPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasPorMes);
-        txtDescripcion.textProperty().bindBidirectional(tipoPlanillaDto.descripcion);
+        txfCodigo.textProperty().bindBidirectional(tipoPlanillaDto.codigo);
+        txfPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txfDescripcion.textProperty().bindBidirectional(tipoPlanillaDto.descripcion);
         chkActivo.selectedProperty().bindBidirectional(tipoPlanillaDto.estado);
     }
 
     public void unbindTipoPlanilla() {
-        txtId.textProperty().unbind();
-        txtCodigo.textProperty().unbindBidirectional(tipoPlanillaDto.codigo);
-        txtPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasPorMes);
-        txtDescripcion.textProperty().unbindBidirectional(tipoPlanillaDto.descripcion);
+        txfId.textProperty().unbind();
+        txfCodigo.textProperty().unbindBidirectional(tipoPlanillaDto.codigo);
+        txfPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txfDescripcion.textProperty().unbindBidirectional(tipoPlanillaDto.descripcion);
         chkActivo.selectedProperty().unbindBidirectional(tipoPlanillaDto.estado);
+    }
+
+    @FXML
+    private void onKeyPressedTxfId(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER && !txfId.getText().isEmpty())
+        {
+            cargarTipoPlanilla(Long.valueOf(txfId.getText()));
+        }
     }
 
 }

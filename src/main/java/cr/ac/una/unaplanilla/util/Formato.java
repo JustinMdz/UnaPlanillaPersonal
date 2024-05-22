@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.text.ParsePosition;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputControl;
@@ -29,9 +30,12 @@ public class Formato {
     }
 
     private static void createInstance() {
-        if (INSTANCE == null) {
-            synchronized (Formato.class) {
-                if (INSTANCE == null) {
+        if (INSTANCE == null)
+        {
+            synchronized (Formato.class)
+            {
+                if (INSTANCE == null)
+                {
                     INSTANCE = new Formato();
                 }
             }
@@ -39,7 +43,8 @@ public class Formato {
     }
 
     public static Formato getInstance() {
-        if (INSTANCE == null) {
+        if (INSTANCE == null)
+        {
             createInstance();
         }
         return INSTANCE;
@@ -52,29 +57,39 @@ public class Formato {
 
     public TextFormatter twoDecimalFormat() {
         TextFormatter numericFormat = new TextFormatter<>(c
-                -> {
-            if (c.getControlNewText().isEmpty()) {
+                ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
                 return c;
             }
-            if (c.getControlNewText().contains(",")) {
+            if (c.getControlNewText().contains(","))
+            {
                 ParsePosition parsePosition = new ParsePosition(0);
                 Object object = decimalFormat.parse(c.getControlNewText(), parsePosition);
 
-                if (object == null || parsePosition.getIndex() < c.getControlNewText().length()) {
+                if (object == null || parsePosition.getIndex() < c.getControlNewText().length())
+                {
                     return null;
-                } else {
+                } else
+                {
                     Pattern validDoubleText = Pattern.compile("^[0-9]*+(\\.[0-9]{0,2})?$");
-                    if (validDoubleText.matcher(c.getControlNewText().replace(",", "")).matches()) {
+                    if (validDoubleText.matcher(c.getControlNewText().replace(",", "")).matches())
+                    {
                         return c;
-                    } else {
+                    } else
+                    {
                         return null;
                     }
                 }
-            } else {
+            } else
+            {
                 Pattern validDoubleText = Pattern.compile("^[0-9]*+(\\.[0-9]{0,2})?$");
-                if (validDoubleText.matcher(c.getControlNewText().replace(",", "")).matches()) {
+                if (validDoubleText.matcher(c.getControlNewText().replace(",", "")).matches())
+                {
                     return c;
-                } else {
+                } else
+                {
                     return null;
                 }
             }
@@ -84,15 +99,19 @@ public class Formato {
 
     public TextFormatter integerFormat() {
         TextFormatter numericFormat = new TextFormatter<>(c
-                -> {
-            if (c.getControlNewText().isEmpty()) {
+                ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
                 return c;
             }
 
             Pattern validDoubleText = Pattern.compile("\\d+");
-            if (validDoubleText.matcher(c.getControlNewText()).matches()) {
+            if (validDoubleText.matcher(c.getControlNewText()).matches())
+            {
                 return c;
-            } else {
+            } else
+            {
                 return null;
             }
         });
@@ -100,20 +119,26 @@ public class Formato {
     }
 
     public TextFormatter cedulaFormat(Integer maxLength) {
-        TextFormatter<String> cedulaFormat = new TextFormatter<>(c -> {
-            if (c.getControlNewText().isEmpty()) {
+        TextFormatter<String> cedulaFormat = new TextFormatter<>(c ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
                 return c;
             }
-            if (maxLength > 0) {
-                if (((TextInputControl) c.getControl()).getLength() >= maxLength && !c.isDeleted()) {
+            if (maxLength > 0)
+            {
+                if (((TextInputControl) c.getControl()).getLength() >= maxLength && !c.isDeleted())
+                {
                     return null;
                 }
-                if (c.getText().length() > maxLength && !c.isDeleted()) {
+                if (c.getText().length() > maxLength && !c.isDeleted())
+                {
                     return null;
                 }
             }
             c.setText(c.getText().replaceAll("[^a-zA-Z0-9-]", ""));
-            if(c.getControlNewText().matches(".*-{2,}.*")){
+            if (c.getControlNewText().matches(".*-{2,}.*"))
+            {
                 return null;
             }
             return c;
@@ -123,23 +148,30 @@ public class Formato {
     }
 
     public TextFormatter letrasFormat(Integer maxLength) {
-        TextFormatter<String> letrasFormat = new TextFormatter<>(c -> {
-            if (c.getControlNewText().isEmpty()) {
+        TextFormatter<String> letrasFormat = new TextFormatter<>(c ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
                 return c;
             }
-            if (maxLength > 0) {
-                if (((TextInputControl) c.getControl()).getLength() >= maxLength && !c.isDeleted()) {
+            if (maxLength > 0)
+            {
+                if (((TextInputControl) c.getControl()).getLength() >= maxLength && !c.isDeleted())
+                {
                     return null;
                 }
-                if (c.getText().length() > maxLength && !c.isDeleted()) {
+                if (c.getText().length() > maxLength && !c.isDeleted())
+                {
                     return null;
                 }
             }
             //c.setText(c.getText().replaceAll("[^a-zA-Z ]", ""));
-            if(c.getControlNewText().matches(".*[^a-zA-Z ].*")){
+            if (c.getControlNewText().matches(".*[^a-zA-Z ].*"))
+            {
                 return null;
             }
-            if(c.getControlNewText().matches(".*\\s{2,}.*")){
+            if (c.getControlNewText().matches(".*\\s{2,}.*"))
+            {
                 return null;
             }
             return c;
@@ -150,19 +182,51 @@ public class Formato {
 
     public TextFormatter maxLengthFormat(Integer length) {
         TextFormatter maxLengthFormat = new TextFormatter<>(c
-                -> {
-            if (c.getControlNewText().isEmpty()) {
+                ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
                 return c;
             }
 
-            if (((TextInputControl) c.getControl()).getLength() >= length && !c.isDeleted()) {
+            if (((TextInputControl) c.getControl()).getLength() >= length && !c.isDeleted())
+            {
                 return null;
             }
-            if (c.getText().length() > length && !c.isDeleted()) {
+            if (c.getText().length() > length && !c.isDeleted())
+            {
                 return null;
             }
             return c;
         });
         return maxLengthFormat;
+    }
+
+    public TextFormatter integerFormatWithMaxLength(int maxLength) {
+        TextFormatter<String> integerFormat = new TextFormatter<>(c ->
+        {
+            if (c.getControlNewText().isEmpty())
+            {
+                return c;
+            }
+
+            Pattern validIntegerText = Pattern.compile("\\d+");
+            if (validIntegerText.matcher(c.getControlNewText()).matches())
+            {
+                if (((TextInputControl) c.getControl()).getLength() >= maxLength && !c.isDeleted())
+                {
+                    return null;
+                }
+                if (c.getText().length() > maxLength && !c.isDeleted())
+                {
+                    return null;
+                }
+                return c;
+            } else
+            {
+                return null;
+            }
+        });
+        return integerFormat;
     }
 }

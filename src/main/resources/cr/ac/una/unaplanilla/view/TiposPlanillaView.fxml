@@ -36,10 +36,10 @@
                                              <children>
                                                 <VBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <MFXTextField fx:id="txtId" floatMode="BORDER" floatingText="Id" onKeyPressed="#onKeyPressedTxtId" prefHeight="50.0" prefWidth="380.0" />
-                                                      <MFXTextField fx:id="txtCodigo" floatMode="BORDER" floatingText="Codigo" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
-                                                      <MFXTextField fx:id="txtDescripcion" floatMode="BORDER" floatingText="Descripcion" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
-                                                      <MFXTextField fx:id="txtPlantillasPorMes" floatMode="BORDER" floatingText="Plantillas por mes" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
+                                                      <MFXTextField fx:id="txfId" floatMode="BORDER" floatingText="Id" onKeyPressed="#onKeyPressedTxfId" prefHeight="50.0" prefWidth="380.0" />
+                                                      <MFXTextField fx:id="txfCodigo" floatMode="BORDER" floatingText="Codigo" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="380.0" styleClass="mfx-text-field" />
+                                                      <MFXTextField fx:id="txfDescripcion" floatMode="BORDER" floatingText="Descripcion" layoutX="10.0" layoutY="423.0" prefHeight="50.0" prefWidth="380.0" />
+                                                      <MFXTextField fx:id="txfPlantillasPorMes" floatMode="BORDER" floatingText="Plantillas por mes" layoutX="10.0" layoutY="323.0" prefHeight="50.0" prefWidth="380.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">

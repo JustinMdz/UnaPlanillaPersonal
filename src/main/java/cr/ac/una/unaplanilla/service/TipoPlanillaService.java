@@ -19,28 +19,6 @@ public class TipoPlanillaService {
     EntityManager em = EntityManagerHelper.getInstance().getManager();
     private EntityTransaction et;
 
-    public Respuesta getUsuario(String usuario, String clave) {
-        try
-        {
-            Query qryUsuario = em.createNamedQuery("Empleado.findByUsuarioClave", Empleado.class);
-            qryUsuario.setParameter("usuario", usuario);
-            qryUsuario.setParameter("clave", clave);
-            EmpleadoDto empleadoDto = new EmpleadoDto((Empleado) qryUsuario.getSingleResult());
-            return new Respuesta(true, "", "", "Usuario", empleadoDto);
-        } catch (NoResultException ex)
-        {
-            return new Respuesta(false, "No existe un usuario con las credenciales ingresadas.", "getUsuario NoResultException");
-        } catch (NonUniqueResultException ex)
-        {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, "Ocurrio un error al consultar el usuario.", "getUsuario NonUniqueResultException");
-        } catch (Exception ex)
-        {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el usuario [" + usuario + "]", ex);
-            return new Respuesta(false, "Error obteniendo el usuario.", "getUsuario " + ex.getMessage());
-        }
-    }
-
     public Respuesta getTipoPlanilla(Long id) {
         try
         {
