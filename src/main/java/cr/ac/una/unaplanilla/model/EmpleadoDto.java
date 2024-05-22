@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class EmpleadoDto implements Serializable {
     
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
     
     public SimpleStringProperty id;
     public SimpleStringProperty nombre;

@@ -44,8 +44,8 @@ public class TipoPlanillaService {
     public Respuesta getTipoPlanilla(Long id) {
         try
         {
-            Query qryTipoPlanilla = em.createNamedQuery("TipoPlanilla.findByTipoPlanillaById", Empleado.class);
-            qryTipoPlanilla.setParameter("id", id);
+            Query qryTipoPlanilla = em.createNamedQuery("TipoPlanilla.findByTplaId", TipoPlanilla.class);
+            qryTipoPlanilla.setParameter("tplaId", id);
             TipoPlanillaDto tipoPlanillaDto = new TipoPlanillaDto((TipoPlanilla) qryTipoPlanilla.getSingleResult());
             return new Respuesta(true, "", "", "TipoPlanilla", tipoPlanillaDto);
         } catch (NoResultException ex)
@@ -73,7 +73,7 @@ public class TipoPlanillaService {
                 tipoPlanilla = em.find(TipoPlanilla.class, tipoPlanillaDto.getId());
                 if (tipoPlanilla == null)
                 {
-                    return new Respuesta(false, "No se encontro en el empleado a guardar", "guardarEmpleado noResultExeption");
+                    return new Respuesta(false, "No se encontro en la tipoPlanilla a guardar", "guardarTipoPlanilla noResultExeption");
                 }
                 tipoPlanilla.actualizar(tipoPlanillaDto);
                 tipoPlanilla = em.merge(tipoPlanilla);
@@ -104,7 +104,7 @@ public class TipoPlanillaService {
                 tipoPlanilla = em.find(TipoPlanilla.class, id);
                 if (tipoPlanilla == null)
                 {
-                    return new Respuesta(false, "No se encontro una plantilla a eliminar", "eliminarTipoPlanilla noResultExeption");
+                    return new Respuesta(false, "No se encontro una tipoPlanilla a eliminar", "eliminarTipoPlanilla noResultExeption");
                 }
 
                 em.remove(tipoPlanilla);

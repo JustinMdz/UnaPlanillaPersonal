@@ -18,6 +18,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -66,7 +67,7 @@ public class TipoPlanilla implements Serializable {
     @Basic(optional = false)
     @Column(name = "TPLA_ESTADO")
     private String tplaEstado;
-    @Basic(optional = false)
+    @Version
     @Column(name = "TPLA_VERSION")
     private Long tplaVersion;
     @JoinTable(name = "PLAM_EMPLEADOSPLANILLA", joinColumns =

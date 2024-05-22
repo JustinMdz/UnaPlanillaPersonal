@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 public class TipoPlanillaDto {
 
+    private static final long serialVersionUID = 1L;
     public SimpleStringProperty id;
     public SimpleStringProperty codigo;
     public SimpleStringProperty descripcion;
@@ -17,7 +18,7 @@ public class TipoPlanillaDto {
     private Integer mesUltimaPlanilla;
     private Integer numeroUltimaPlanilla;
     public SimpleBooleanProperty estado;
-    private Boolean modificado;
+    private boolean modificado;
     ObservableList<EmpleadoDto> empleados;
     List<EmpleadoDto> empleadosEliminados;
 
@@ -120,11 +121,11 @@ public class TipoPlanillaDto {
         this.estado.setValue(tplaEstado.equalsIgnoreCase("A"));
     }
 
-    public Boolean getModificado() {
+    public boolean getModificado() {
         return modificado;
     }
 
-    public void setModificado(Boolean modificado) {
+    public void setModificado(boolean modificado) {
         this.modificado = modificado;
     }
 
@@ -142,6 +143,28 @@ public class TipoPlanillaDto {
 
     public void setEmpleadosEliminados(List<EmpleadoDto> empleadosEliminados) {
         this.empleadosEliminados = empleadosEliminados;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof TipoPlanillaDto))
+        {
+            return false;
+        }
+        TipoPlanillaDto other = (TipoPlanillaDto) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
+        {
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -2,6 +2,7 @@ package cr.ac.una.unaplanilla.controller;
 
 import cr.ac.una.unaplanilla.model.TipoPlanillaDto;
 import cr.ac.una.unaplanilla.service.TipoPlanillaService;
+import cr.ac.una.unaplanilla.util.Formato;
 import cr.ac.una.unaplanilla.util.Mensaje;
 import cr.ac.una.unaplanilla.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -49,9 +50,14 @@ public class TiposPlanillaController extends Controller implements Initializable
     private MFXTextField txtDescripcion;
     @FXML
     private MFXTextField txtPlantillasPorMes;
-
     private TipoPlanillaDto tipoPlanillaDto;
-    List<Node> requiredNodes = new ArrayList<>();
+    private List<Node> requeridos;
+    @FXML
+    private MFXButton btnNuevo1;
+    @FXML
+    private MFXButton btnGuardar1;
+    @FXML
+    private MFXButton btnEliminar1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,7 +66,13 @@ public class TiposPlanillaController extends Controller implements Initializable
 
     @Override
     public void initialize() {
-
+        this.tipoPlanillaDto = new TipoPlanillaDto();
+        this.requeridos = new ArrayList<>();
+        chkActivo.setUserData("A");
+        txtId.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtCodigo.delegateSetTextFormatter(Formato.getInstance().letrasFormat(4));
+        nuevoTipoPlanilla();
+        IndicarRequeridos();
     }
 
     @FXML
@@ -87,25 +99,25 @@ public class TiposPlanillaController extends Controller implements Initializable
             String invalidos = validarRequeridos();
             if (!invalidos.isBlank())
             {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Tipo Planilla", this.getStage(), invalidos);
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Tipo Planilla", getStage(), invalidos);
             } else
             {
                 TipoPlanillaService tipoPlanillaService = new TipoPlanillaService();
-                Respuesta respuesta = tipoPlanillaService.guardarTipoPlanilla(tipoPlanillaDto);
+                Respuesta respuesta = tipoPlanillaService.guardarTipoPlanilla(this.tipoPlanillaDto);
                 if (respuesta.getEstado())
                 {
                     unbindTipoPlanilla();
                     this.tipoPlanillaDto = (TipoPlanillaDto) respuesta.getResultado("TipoPlanilla");
                     bindTipoPlanilla(false);
-                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Guardar Tipo Planilla", this.getStage(), "Tipo de Planilla guardado correctamente.");
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Guardar Tipo Planilla", getStage(), "Tipo de Planilla guardado correctamente.");
                 } else
                 {
-                    new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Tipo Planilla", getStage(), respuesta.getMensaje());
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", getStage(), respuesta.getMensaje());
                 }
             }
-        } catch (Exception e)
+        } catch (Exception ex)
         {
-            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE, "Error al guardar el tipo de planilla.", e);
+            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE, "Error al guardar el tipo de planilla.", ex);
             new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Tipo Planilla", getStage(), "Ocurrió un error al guardar el tipo de planilla.");
         }
     }
@@ -114,29 +126,32 @@ public class TiposPlanillaController extends Controller implements Initializable
     private void onActionBtnEliminar(ActionEvent event) {
         try
         {
-            if (tipoPlanillaDto.getId() == null)
+            if (this.tipoPlanillaDto.getId() == null)
             {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Tipo Planilla", this.getStage(), "No se ha cargado un tipo de planilla para eliminar.");
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Tipo Planilla", getStage(), "Favor consultar el tipo de planilla a eliminar.");
             } else
             {
 
                 TipoPlanillaService tipoPlanillaService = new TipoPlanillaService();
-                Respuesta respuesta = tipoPlanillaService.eliminarTipoPlanilla(tipoPlanillaDto.getId());
-                if (!respuesta.getEstado())
+                Respuesta respuesta = tipoPlanillaService.eliminarTipoPlanilla(this.tipoPlanillaDto.getId());
+                if (respuesta.getEstado())
                 {
-                    new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Tipo Planilla", this.getStage(), respuesta.getMensaje());
+                    nuevoTipoPlanilla();
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar tipoPlanilla", getStage(), "La tipoPlanilla se elimino correctamente");
                 } else
                 {
-                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Tipo Planilla", this.getStage(), "Tipo de Planilla eliminado correctamente.");
-                    nuevoTipoPlanilla();
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar tipoPlanilla", getStage(), respuesta.getMensaje());
                 }
             }
-        } catch (Exception e)
+        } catch (Exception ex)
         {
-            // TODO: handle exception
-            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE, "Error al eliminar el tipo de planilla.", e);
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Tipo Planilla", this.getStage(), "Ocurrió un error al eliminar el tipo de planilla.");
+            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE, "Error al eliminar el tipo de planilla.", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Tipo Planilla", getStage(), "Ocurrió un error al eliminar el tipo de planilla.");
         }
+    }
+
+    @FXML
+    private void onActionBtnGuardar1(ActionEvent event) {
     }
 
     private void cargarTipoPlanilla(Long id) {
@@ -153,44 +168,26 @@ public class TiposPlanillaController extends Controller implements Initializable
                 validarRequeridos();
             } else
             {
-                new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", this.getStage(),
-                        respuesta.getMensaje());
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", getStage(), respuesta.getMensaje());
             }
-        } catch (Exception e)
+        } catch (Exception ex)
         {
-            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE,
-                    "Error al cargar el tipo de planilla.", e);
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", this.getStage(),
-                    "Ocurrió un error al cargar el tipo de planilla.");
+            Logger.getLogger(TiposPlanillaController.class.getName()).log(Level.SEVERE, "Error al consultar tipo de planilla.", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Cargar Tipo Planilla", this.getStage(), "Ocurrió un error al cargar el tipo de planilla.");
         }
     }
 
-    public void unbindTipoPlanilla() {
-        txtId.textProperty().unbind();
-        txtCodigo.textProperty().unbindBidirectional(tipoPlanillaDto.codigo);
-        txtPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasPorMes);
-        txtDescripcion.textProperty().unbindBidirectional(tipoPlanillaDto.descripcion);
-        chkActivo.selectedProperty().unbindBidirectional(tipoPlanillaDto.estado);
-    }
-
-    private void bindTipoPlanilla(Boolean nuevo) {
-        if (!nuevo)
-        {
-            txtId.textProperty().bindBidirectional(tipoPlanillaDto.id);
-        }
-        txtCodigo.textProperty().bindBidirectional(tipoPlanillaDto.codigo);
-        txtPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasPorMes);
-        txtDescripcion.textProperty().bindBidirectional(tipoPlanillaDto.descripcion);
-        chkActivo.selectedProperty().bindBidirectional(tipoPlanillaDto.estado);
+    private void IndicarRequeridos() {
+        requeridos.clear();
+        requeridos.addAll(Arrays.asList(txtCodigo, txtDescripcion, txtPlantillasPorMes));
     }
 
     public String validarRequeridos() {
         Boolean validos = true;
         String invalidos = "";
-        for (Node node : requiredNodes)
+        for (Node node : requeridos)
         {
-            if (node instanceof MFXTextField
-                    && (((MFXTextField) node).getText() == null || ((MFXTextField) node).getText().isBlank()))
+            if (node instanceof MFXTextField && (((MFXTextField) node).getText() == null || ((MFXTextField) node).getText().isBlank()))
             {
                 if (validos)
                 {
@@ -200,8 +197,7 @@ public class TiposPlanillaController extends Controller implements Initializable
                     invalidos += "," + ((MFXTextField) node).getFloatingText();
                 }
                 validos = false;
-            } else if (node instanceof MFXPasswordField
-                    && (((MFXPasswordField) node).getText() == null || ((MFXPasswordField) node).getText().isBlank()))
+            } else if (node instanceof MFXPasswordField && (((MFXPasswordField) node).getText() == null || ((MFXPasswordField) node).getText().isBlank()))
             {
                 if (validos)
                 {
@@ -242,17 +238,31 @@ public class TiposPlanillaController extends Controller implements Initializable
         }
     }
 
-    public void requiredNodesIndicate() {
-        requiredNodes.clear();
-        requiredNodes.addAll(Arrays.asList(txtCodigo, txtDescripcion, txtPlantillasPorMes));
-    }
-
     private void nuevoTipoPlanilla() {
         unbindTipoPlanilla();
         tipoPlanillaDto = new TipoPlanillaDto();
         bindTipoPlanilla(true);
         txtId.clear();
-        chkActivo.requestFocus();
+        txtId.requestFocus();
+    }
+
+    private void bindTipoPlanilla(Boolean nuevo) {
+        if (!nuevo)
+        {
+            txtId.textProperty().bindBidirectional(tipoPlanillaDto.id);
+        }
+        txtCodigo.textProperty().bindBidirectional(tipoPlanillaDto.codigo);
+        txtPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txtDescripcion.textProperty().bindBidirectional(tipoPlanillaDto.descripcion);
+        chkActivo.selectedProperty().bindBidirectional(tipoPlanillaDto.estado);
+    }
+
+    public void unbindTipoPlanilla() {
+        txtId.textProperty().unbind();
+        txtCodigo.textProperty().unbindBidirectional(tipoPlanillaDto.codigo);
+        txtPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txtDescripcion.textProperty().unbindBidirectional(tipoPlanillaDto.descripcion);
+        chkActivo.selectedProperty().unbindBidirectional(tipoPlanillaDto.estado);
     }
 
 }
