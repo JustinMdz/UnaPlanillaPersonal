@@ -128,3 +128,12 @@
 .jfx-separator-EmpleadosView{
     -fx-background-color:-fx-base-color-titulos;
 }
+
+.jfx-container-BusquedaEmpleados{
+    
+    -fx-background-color:-fx-base-color-titulos;
+}
+
+.jfx-container-BusquedaEmpleados > Label{
+    -fx-text-fill: white;
+}

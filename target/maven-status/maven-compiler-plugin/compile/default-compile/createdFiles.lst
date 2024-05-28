@@ -15,6 +15,7 @@ cr\ac\una\unaplanilla\service\TipoPlanillaService.class
 cr\ac\una\unaplanilla\util\EntityManagerHelper.class
 cr\ac\una\unaplanilla\model\TipoPlanillaDto.class
 cr\ac\una\unaplanilla\util\Formato.class
+cr\ac\una\unaplanilla\controller\EmpleadosBuscarController.class
 cr\ac\una\unaplanilla\controller\PrincipalController.class
 cr\ac\una\unaplanilla\model\TipoPlanilla.class
 cr\ac\una\unaplanilla\util\Respuesta.class
