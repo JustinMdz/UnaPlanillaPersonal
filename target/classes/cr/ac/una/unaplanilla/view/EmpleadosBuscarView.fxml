@@ -42,9 +42,9 @@
                         </VBox>
                         <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <HBox alignment="CENTER" styleClass="jfx-container-BusquedaEmpleados">
+                              <HBox alignment="CENTER">
                                  <children>
-                                    <Label styleClass="jfx-titulo-label-PricipalView" text="Filtrar" />
+                                    <MFXButton fx:id="btnFiltrar" onAction="#onActionBtnFiltrar" styleClass="jfx-btn-nuevo" text="Filtrar" />
                                  </children>
                               </HBox>
                            </children>

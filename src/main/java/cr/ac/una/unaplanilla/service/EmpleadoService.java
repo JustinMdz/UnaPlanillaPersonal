@@ -9,6 +9,8 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -119,6 +121,32 @@ public class EmpleadoService {
             et.rollback();
             Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error eliminando el empleado ", ex);
             return new Respuesta(false, "Error elimanando el empleado.", "eliminarEmpleado" + ex.getMessage());
+        }
+    }
+
+    //
+    public Respuesta getEmpleados(String cedula, String nombre, String pApellido, String sApellido) {
+        try
+        {
+            Query query = em.createNamedQuery("Empleado.findByCedNomPApe", Empleado.class);
+            query.setParameter("cedula", cedula);
+            query.setParameter("nombre", nombre);
+            query.setParameter("primerApellido", pApellido);
+            query.setParameter("segundoApellido", sApellido);
+            List<Empleado> empleados = (List<Empleado>) query.getResultList();
+            List<EmpleadoDto> empleadosDto = new ArrayList<>();
+            for (Empleado emp : empleados)
+            {
+                empleadosDto.add(new EmpleadoDto(emp));
+            }
+            return new Respuesta(true, "", "", "Empleados", empleadosDto);
+        } catch (NoResultException ex)
+        {
+            return new Respuesta(false, "No existen empleados con los criterios ingresados.", "getEmpleados NoResultException");
+        } catch (Exception ex)
+        {
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo empleados.", ex);
+            return new Respuesta(false, "Error obteniendo empleados.", "getEmpleados " + ex.getMessage());
         }
     }
 }

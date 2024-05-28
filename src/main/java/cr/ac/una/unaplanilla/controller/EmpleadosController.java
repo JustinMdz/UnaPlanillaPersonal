@@ -3,6 +3,7 @@ package cr.ac.una.unaplanilla.controller;
 import cr.ac.una.unaplanilla.model.EmpleadoDto;
 import cr.ac.una.unaplanilla.service.EmpleadoService;
 import cr.ac.una.unaplanilla.util.BindingUtils;
+import cr.ac.una.unaplanilla.util.FlowController;
 import cr.ac.una.unaplanilla.util.Formato;
 import cr.ac.una.unaplanilla.util.Mensaje;
 import cr.ac.una.unaplanilla.util.Respuesta;
@@ -28,6 +29,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -75,6 +77,8 @@ public class EmpleadosController extends Controller implements Initializable {
     private MFXCheckbox chkActivo;
     @FXML
     private ToggleGroup tggGenero;
+    @FXML
+    private MFXButton btnBuscar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -104,6 +108,11 @@ public class EmpleadosController extends Controller implements Initializable {
         {
             nuevoEmpleado();
         }
+    }
+
+    @FXML
+    private void onActionBtnBuscar(ActionEvent event) {
+        FlowController.getInstance().goViewInWindowModal("EmpleadosBuscarView", ((Stage) btnBuscar.getScene().getWindow()), true);
     }
 
     @FXML
