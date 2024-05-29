@@ -16,6 +16,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.QueryHint;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
@@ -37,7 +38,9 @@ import jakarta.persistence.Version;
             @NamedQuery(name = "TipoPlanilla.findByTplaMesultpla", query = "SELECT t FROM TipoPlanilla t WHERE t.tplaMesultpla = :tplaMesultpla"),
             @NamedQuery(name = "TipoPlanilla.findByTplaNumultpla", query = "SELECT t FROM TipoPlanilla t WHERE t.tplaNumultpla = :tplaNumultpla"),
             @NamedQuery(name = "TipoPlanilla.findByTplaEstado", query = "SELECT t FROM TipoPlanilla t WHERE t.tplaEstado = :tplaEstado"),
-            @NamedQuery(name = "TipoPlanilla.findByTplaVersion", query = "SELECT t FROM TipoPlanilla t WHERE t.tplaVersion = :tplaVersion")
+            @NamedQuery(name = "TipoPlanilla.findByTplaVersion", query = "SELECT t FROM TipoPlanilla t WHERE t.tplaVersion = :tplaVersion"),
+            @NamedQuery(name = "TipoPlanilla.findByFilters", query = "SELECT t FROM TipoPlanilla t  WHERE UPPER(t.tplaCodigo) like :codigo and UPPER(t.tplaDescripcion) like :descripcion and UPPER(t.tplaPlaxmes) like :planillasXMes")
+
         })
 public class TipoPlanilla implements Serializable {
 

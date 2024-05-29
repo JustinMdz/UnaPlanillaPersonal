@@ -2,6 +2,7 @@ package cr.ac.una.unaplanilla.controller;
 
 import cr.ac.una.unaplanilla.model.TipoPlanillaDto;
 import cr.ac.una.unaplanilla.service.TipoPlanillaService;
+import cr.ac.una.unaplanilla.util.FlowController;
 import cr.ac.una.unaplanilla.util.Formato;
 import cr.ac.una.unaplanilla.util.Mensaje;
 import cr.ac.una.unaplanilla.util.Respuesta;
@@ -25,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,6 +59,8 @@ public class TiposPlanillaController extends Controller implements Initializable
     private MFXButton btnEliminar1;
     private TipoPlanillaDto tipoPlanillaDto;
     private List<Node> requeridos;
+    @FXML
+    private MFXButton btnBuscar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -245,7 +249,7 @@ public class TiposPlanillaController extends Controller implements Initializable
             txfId.textProperty().bind(tipoPlanillaDto.id);
         }
         txfCodigo.textProperty().bindBidirectional(tipoPlanillaDto.codigo);
-        txfPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txfPlantillasPorMes.textProperty().bindBidirectional(tipoPlanillaDto.planillasXMes);
         txfDescripcion.textProperty().bindBidirectional(tipoPlanillaDto.descripcion);
         chkActivo.selectedProperty().bindBidirectional(tipoPlanillaDto.estado);
     }
@@ -253,7 +257,7 @@ public class TiposPlanillaController extends Controller implements Initializable
     public void unbindTipoPlanilla() {
         txfId.textProperty().unbind();
         txfCodigo.textProperty().unbindBidirectional(tipoPlanillaDto.codigo);
-        txfPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasPorMes);
+        txfPlantillasPorMes.textProperty().unbindBidirectional(tipoPlanillaDto.planillasXMes);
         txfDescripcion.textProperty().unbindBidirectional(tipoPlanillaDto.descripcion);
         chkActivo.selectedProperty().unbindBidirectional(tipoPlanillaDto.estado);
     }
@@ -263,6 +267,18 @@ public class TiposPlanillaController extends Controller implements Initializable
         if (event.getCode() == KeyCode.ENTER && !txfId.getText().isEmpty())
         {
             cargarTipoPlanilla(Long.valueOf(txfId.getText()));
+        }
+    }
+
+    @FXML
+    private void onActionBtnBuscar(ActionEvent event) {
+        PlanillasBuscarController busquedaController = (PlanillasBuscarController) FlowController.getInstance().getController("PlanillasBuscarView");
+        FlowController.getInstance().goViewInWindowModal("PlanillasBuscarView", ((Stage) btnBuscar.getScene().getWindow()), true);
+        TipoPlanillaDto tpla = (TipoPlanillaDto) busquedaController.getResultado();
+
+        if (tpla != null)
+        {
+            cargarTipoPlanilla(tpla.getId());
         }
     }
 

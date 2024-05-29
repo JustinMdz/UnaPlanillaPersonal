@@ -13,7 +13,7 @@ public class TipoPlanillaDto {
     public SimpleStringProperty id;
     public SimpleStringProperty codigo;
     public SimpleStringProperty descripcion;
-    public SimpleStringProperty planillasPorMes;
+    public SimpleStringProperty planillasXMes;
     private Integer anoUltimaPlanilla;
     private Integer mesUltimaPlanilla;
     private Integer numeroUltimaPlanilla;
@@ -27,7 +27,7 @@ public class TipoPlanillaDto {
         this.id = new SimpleStringProperty("");
         this.codigo = new SimpleStringProperty("");
         this.descripcion = new SimpleStringProperty("");
-        this.planillasPorMes = new SimpleStringProperty("");
+        this.planillasXMes = new SimpleStringProperty("");
         this.estado = new SimpleBooleanProperty(true);
         empleados = FXCollections.observableArrayList();
         empleadosEliminados = new ArrayList<>();
@@ -38,7 +38,7 @@ public class TipoPlanillaDto {
         this.id.set(tipoPlanilla.getTplaId().toString());
         this.codigo.set(tipoPlanilla.getTplaCodigo());
         this.descripcion.set(tipoPlanilla.getTplaDescripcion());
-        this.planillasPorMes.set(tipoPlanilla.getTplaPlaxmes().toString());
+        this.planillasXMes.set(tipoPlanilla.getTplaPlaxmes().toString());
         this.anoUltimaPlanilla = tipoPlanilla.getTplaAnoultpla();
         this.mesUltimaPlanilla = tipoPlanilla.getTplaMesultpla();
         this.numeroUltimaPlanilla = tipoPlanilla.getTplaNumultpla();
@@ -76,9 +76,9 @@ public class TipoPlanillaDto {
     }
 
     public Integer gettplaPlaxmes() {
-        if (planillasPorMes.get() != null && !planillasPorMes.get().isEmpty())
+        if (planillasXMes.get() != null && !planillasXMes.get().isEmpty())
         {
-            return Integer.valueOf(planillasPorMes.get());
+            return Integer.valueOf(planillasXMes.get());
         } else
         {
             return null;
@@ -86,7 +86,7 @@ public class TipoPlanillaDto {
     }
 
     public void setPlanillasPorMes(Integer tplaPlaxmes) {
-        this.planillasPorMes.set(tplaPlaxmes.toString());
+        this.planillasXMes.set(tplaPlaxmes.toString());
     }
 
     public Integer getAnoUltimaPlanilla() {

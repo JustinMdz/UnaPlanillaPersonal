@@ -13,6 +13,7 @@ cr\ac\una\unaplanilla\model\Empleado.class
 cr\ac\una\unaplanilla\model\EmpleadoDto.class
 cr\ac\una\unaplanilla\service\TipoPlanillaService.class
 cr\ac\una\unaplanilla\util\EntityManagerHelper.class
+cr\ac\una\unaplanilla\controller\PlanillasBuscarController.class
 cr\ac\una\unaplanilla\model\TipoPlanillaDto.class
 cr\ac\una\unaplanilla\util\Formato.class
 cr\ac\una\unaplanilla\controller\EmpleadosBuscarController.class

@@ -11,13 +11,42 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.beans.property.SimpleStringProperty;
 
 public class TipoPlanillaService {
 
     EntityManager em = EntityManagerHelper.getInstance().getManager();
     private EntityTransaction et;
+
+    public Respuesta getAll() {
+        try
+        {
+            Query qryTipoPlanilla = em.createNamedQuery("TipoPlanilla.findAll", TipoPlanilla.class);
+            List<TipoPlanilla> tPlas = (List<TipoPlanilla>) qryTipoPlanilla.getResultList();
+            List<TipoPlanillaDto> tplaDto = new ArrayList<>();
+            for (TipoPlanilla tPla : tPlas)
+            {
+                tplaDto.add(new TipoPlanillaDto(tPla));
+            }
+            return new Respuesta(true, "", "", "AllTiposPlanilla", tplaDto);
+        } catch (NoResultException ex)
+        {
+            return new Respuesta(false, "No existe una tipoPlanilla con el código ingresado.", "getTipoPlanilla NoResultException");
+        } catch (NonUniqueResultException ex)
+        {
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar la tipoPlanilla.", ex);
+            return new Respuesta(false, "Ocurrio un error al consultar la tipoPlanilla.", "getTipoPlanilla NonUniqueResultException");
+        } catch (Exception ex)
+        {
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error obteniendo la tipoPlanilla ", ex);
+            return new Respuesta(false, "Error obteniendo la tipoPlanilla.", "getTipoPlanilla " + ex.getMessage());
+        }
+    }
 
     public Respuesta getTipoPlanilla(Long id) {
         try
@@ -101,5 +130,29 @@ public class TipoPlanillaService {
             return new Respuesta(false, "Error elimanando la tipoPlanilla.", "eliminarTipoPlanilla" + ex.getMessage());
         }
 
+    }
+
+    public Respuesta getTiposPlanillaFiltros(String codigo, String descripcion, String planillasXMes) {
+        try
+        {
+            Query query = em.createNamedQuery("TipoPlanilla.findByFilters", TipoPlanilla.class);
+            query.setParameter("codigo", ("%" + codigo + "%").toUpperCase());
+            query.setParameter("descripcion", "%" + descripcion + "%");
+            query.setParameter("planillasXMes", "%" + planillasXMes + "%");
+            List<TipoPlanilla> tiposPlanilla = (List<TipoPlanilla>) query.getResultList();
+            List<TipoPlanillaDto> tiposPlanillaDto = new ArrayList<>();
+            for (TipoPlanilla tipoPlanilla : tiposPlanilla)
+            {
+                tiposPlanillaDto.add(new TipoPlanillaDto(tipoPlanilla));
+            }
+            return new Respuesta(true, "", "", "TiposPlanilla", tiposPlanillaDto);
+        } catch (NoResultException ex)
+        {
+            return new Respuesta(false, "No existen TiposPlanilla con esos detalles.", "getTiposPlanilla NoResultException");
+        } catch (Exception ex)
+        {
+            Logger.getLogger(TipoPlanillaService.class.getName()).log(Level.SEVERE, "Error obteniendo tiposPlanillas.", ex);
+            return new Respuesta(false, "Error obteniendo TiposPlanillas.", "getTiposPlanilla " + ex.getMessage());
+        }
     }
 }
