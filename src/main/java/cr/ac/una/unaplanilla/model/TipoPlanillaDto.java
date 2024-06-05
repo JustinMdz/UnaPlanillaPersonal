@@ -161,7 +161,7 @@ public class TipoPlanillaDto {
             return false;
         }
         TipoPlanillaDto other = (TipoPlanillaDto) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.getValue().equals(other.id.getValue())))
         {
             return false;
         }

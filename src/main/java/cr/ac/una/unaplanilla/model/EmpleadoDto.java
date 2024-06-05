@@ -224,7 +224,7 @@ public class EmpleadoDto implements Serializable {
             return false;
         }
         EmpleadoDto other = (EmpleadoDto) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.getValue().equals(other.id.getValue())))
         {
             return false;
         }

@@ -278,12 +278,6 @@ public class TiposPlanillaController extends Controller implements Initializable
     private void cargarEmpleados() {
         tbvEmpleados.getItems().clear();
         tbvEmpleados.setItems(this.tipoPlanillaDto.getEmpleados());
-
-        System.out.println("INFO EMPLEADOS");
-        for (EmpleadoDto emp : this.tipoPlanillaDto.getEmpleados())
-        {
-            System.out.println("Emp: " + emp.getNombre());
-        }
         tbvEmpleados.refresh();
     }
 
