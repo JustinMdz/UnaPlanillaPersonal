@@ -94,7 +94,7 @@ public class TipoPlanillaService {
                 }
                 if (!(tipoPlanillaDto.getEmpleados().isEmpty()))
                 {
-                    for (EmpleadoDto empDto : tipoPlanillaDto.getEmpleadosEliminados())
+                    for (EmpleadoDto empDto : tipoPlanillaDto.getEmpleados())
                     {
                         if (empDto.getModificado())
                         {

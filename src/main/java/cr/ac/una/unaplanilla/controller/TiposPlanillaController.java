@@ -267,8 +267,8 @@ public class TiposPlanillaController extends Controller implements Initializable
 
     private void nuevoEmpleado() {
         unbindEmpleado();
-        //tbvEmpleados.getSelectionModel().clearSelection();
-        tbvEmpleados.getSelectionModel().select(null);
+        tbvEmpleados.getSelectionModel().clearSelection();
+        // tbvEmpleados.getSelectionModel().select(null);
         this.empleadoDto = new EmpleadoDto();
         bindEmpleado(true);
         txfIdEmpleado.clear();
@@ -278,6 +278,12 @@ public class TiposPlanillaController extends Controller implements Initializable
     private void cargarEmpleados() {
         tbvEmpleados.getItems().clear();
         tbvEmpleados.setItems(this.tipoPlanillaDto.getEmpleados());
+
+        System.out.println("INFO EMPLEADOS");
+        for (EmpleadoDto emp : this.tipoPlanillaDto.getEmpleados())
+        {
+            System.out.println("Emp: " + emp.getNombre());
+        }
         tbvEmpleados.refresh();
     }
 
