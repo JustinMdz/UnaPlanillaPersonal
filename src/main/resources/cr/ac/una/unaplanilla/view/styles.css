@@ -130,10 +130,19 @@
 }
 
 .jfx-container-BusquedaEmpleados{
-    
+
     -fx-background-color:-fx-base-color-titulos;
 }
 
 .jfx-container-BusquedaEmpleados > Label{
     -fx-text-fill: white;
+}
+
+.jfx-btnimg-tbveliminar{
+    -fx-opacity: 0.8;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+    -fx-background-color: #f44336;
+    -fx-background-image : url("../resources/Eliminar-48.png");
 }

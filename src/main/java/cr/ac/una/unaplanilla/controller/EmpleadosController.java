@@ -64,9 +64,6 @@ public class EmpleadosController extends Controller implements Initializable {
     private MFXTextField txtUsuario;
     @FXML
     private MFXPasswordField txtClave;
-
-    private EmpleadoDto empleadoDto;
-    List<Node> requeridos = new ArrayList<>();
     @FXML
     private MFXDatePicker dtpFIngreso;
     @FXML
@@ -79,6 +76,9 @@ public class EmpleadosController extends Controller implements Initializable {
     private ToggleGroup tggGenero;
     @FXML
     private MFXButton btnBuscar;
+
+    private EmpleadoDto empleadoDto;
+    List<Node> requeridos = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,8 +1,6 @@
 package cr.ac.una.unaplanilla.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -16,7 +14,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.QueryHint;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
@@ -186,7 +183,7 @@ public class TipoPlanilla implements Serializable {
         this.tplaVersion = tplaVersion;
     }
 
-    public List<Empleado> getEmpleadoList() {
+    public List<Empleado> getEmpleados() {
         return empleados;
     }
 

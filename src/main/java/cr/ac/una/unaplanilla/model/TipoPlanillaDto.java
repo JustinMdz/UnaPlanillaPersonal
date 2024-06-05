@@ -19,8 +19,9 @@ public class TipoPlanillaDto {
     private Integer numeroUltimaPlanilla;
     public SimpleBooleanProperty estado;
     private boolean modificado;
-    ObservableList<EmpleadoDto> empleados;
-    List<EmpleadoDto> empleadosEliminados;
+   
+    private ObservableList<EmpleadoDto> empleados;
+    private List<EmpleadoDto> empleadosEliminados;
 
     public TipoPlanillaDto() {
         this.modificado = false;

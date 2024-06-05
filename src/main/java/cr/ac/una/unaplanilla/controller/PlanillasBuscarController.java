@@ -1,6 +1,5 @@
 package cr.ac.una.unaplanilla.controller;
 
-import cr.ac.una.unaplanilla.model.EmpleadoDto;
 import cr.ac.una.unaplanilla.model.TipoPlanillaDto;
 import cr.ac.una.unaplanilla.service.TipoPlanillaService;
 import cr.ac.una.unaplanilla.util.Formato;
